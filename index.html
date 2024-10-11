@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+<body>
+    <h2>Список книг</h2>
+        
+    <input type="search" placeholder="Найти книгу..." id="search">
+
+    <ul class="list">
+        <li class="list__item">Филип К. Дик "Помутнение"</li>
+        <li class="list__item">Айзек Азимов "Академия"</li>
+        <li class="list__item">Станислав Лем "Солярис"</li>
+    </ul>
+
+    <script>
+        const search = document.getElementById('search');
+
+        search.addEventListener('input', function() {
+            const filter_search = search.value.toLowerCase();
+            const items = document.querySelectorAll('.list__item');
+
+            for (let i = 0; i < items.length; i++) {
+                const item_value = items[i].textContent.toLowerCase();
+
+                if (item_value.includes(filter_search)) {
+                    items[i].style.display = '';
+                } else {
+                    items[i].style.display = 'none';
+                }
+
+                /* 
+                    С использованием тернарного оператора: 
+
+                    items[i].style.display = 
+                        item_value.includes(filter_search) ? '' : 'none';
+                        
+                */
+            }
+        })
+    </script>
+
+</body>
+</html>
